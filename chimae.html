@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>치매 자가진단</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f0f8ff; 
+            color: #333; 
+        }
+        .question {
+            margin-bottom: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .options label:hover {
+            background-color: #e0e0e0;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        p.intro {
+            margin-bottom: 50px;
+            font-size: 1.2em;
+            color: #34495e;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>치매 자가진단</h1>
+
+    <form id="chimae-form">
+        <div class="question">
+            <p>1. 최근의 일이나 중요한 날짜, 사건을 기억하지 못하거나 반복해서 같은 질문을 한다.</p>
+            <div class="options">
+                <label><input type="radio" name="question1" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question1" value="3"> 그렇다</label>
+                <label><input type="radio" name="question1" value="2"> 보통이다</label>
+                <label><input type="radio" name="question1" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question1" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. 익숙한 업무를 수행하는 데 어려움을 겪거나 혼란스러움을 느낀다.</p>
+            <div class="options">
+                <label><input type="radio" name="question2" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question2" value="3"> 그렇다</label>
+                <label><input type="radio" name="question2" value="2"> 보통이다</label>
+                <label><input type="radio" name="question2" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question2" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. 말이나 글을 이해하고 표현하는 데 어려움을 느끼고, 단어나 이름을 자주 잊어버린다.</p>
+            <div class="options">
+                <label><input type="radio" name="question3" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question3" value="3"> 그렇다</label>
+                <label><input type="radio" name="question3" value="2"> 보통이다</label>
+                <label><input type="radio" name="question3" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question3" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. 현재 날짜, 시간, 계절을 혼동하거나 익숙한 장소에서 길을 잃어버린다.</p>
+            <div class="options">
+                <label><input type="radio" name="question4" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question4" value="3"> 그렇다</label>
+                <label><input type="radio" name="question4" value="2"> 보통이다</label>
+                <label><input type="radio" name="question4" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question4" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. 판단력이나 의사결정 능력이 현저히 저하되었음을 실감한다.</p>
+            <div class="options">
+                <label><input type="radio" name="question5" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question5" value="3"> 그렇다</label>
+                <label><input type="radio" name="question5" value="2"> 보통이다</label>
+                <label><input type="radio" name="question5" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question5" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. 길을 찾는 데 어려움을 겪거나, 거리를 판단하기 힘들다.</p>
+            <div class="options">
+                <label><input type="radio" name="question6" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question6" value="3"> 그렇다</label>
+                <label><input type="radio" name="question6" value="2"> 보통이다</label>
+                <label><input type="radio" name="question6" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question6" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. 물건을 자주 잃어버리고 찾지 못하거나, 비정상적인 장소애 물건을 둔다.</p>
+            <div class="options">
+                <label><input type="radio" name="question7" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question7" value="3"> 그렇다</label>
+                <label><input type="radio" name="question7" value="2"> 보통이다</label>
+                <label><input type="radio" name="question7" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question7" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. 사회 활동이나 업무, 취미 활동에 대한 흥미를 잃거나 참여하기가 꺼려진다.</p>
+            <div class="options">
+                <label><input type="radio" name="question8" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question8" value="3"> 그렇다</label>
+                <label><input type="radio" name="question8" value="2"> 보통이다</label>
+                <label><input type="radio" name="question8" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question8" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. 쉽게 화를 내거나 의심이 많아지는 등 성격 변화가 나타나고, 기분이 급격히 변한다.</p>
+            <div class="options">
+                <label><input type="radio" name="question9" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question9" value="3"> 그렇다</label>
+                <label><input type="radio" name="question9" value="2"> 보통이다</label>
+                <label><input type="radio" name="question9" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question9" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. 집중하는 데 어려움을 느끼거나, 단순한 일을 마무리하는 데 시간이 더 오래 걸린다.</p>
+            <div class="options">
+                <label><input type="radio" name="question10" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question10" value="3"> 그렇다</label>
+                <label><input type="radio" name="question10" value="2"> 보통이다</label>
+                <label><input type="radio" name="question10" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question10" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+
+        <button type="submit">제출</button>
+    </form>
+
+    <script>
+        document.getElementById('chimae-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const questions = 10;
+            let totalScore = 0;
+    
+            for (let i = 1; i <= questions; i++) {
+                const question = document.querySelector(`input[name="question${i}"]:checked`);
+                if (question) {
+                    totalScore += parseInt(question.value);
+                }
+            }
+    
+            // Redirect to the result page with the total score as a query parameter
+            window.location.href = `chimae_result.html?score=${totalScore}`;
+        });
+    </script>
+</body>
+</html>

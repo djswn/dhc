@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성인 ADHD 자가진단</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f0f8ff; 
+            color: #333; 
+        }
+        .question {
+            margin-bottom: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .options label:hover {
+            background-color: #e0e0e0;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        p.intro {
+            margin-bottom: 50px;
+            font-size: 1.2em;
+            color: #34495e;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>성인 ADHD 자가진단</h1>
+
+    <form id="adhd-form">
+        <div class="question">
+            <p>1. 일을 순서대로 진행하기 어렵다.</p>
+            <div class="options">
+                <label><input type="radio" name="question1" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question1" value="3"> 그렇다</label>
+                <label><input type="radio" name="question1" value="2"> 보통이다</label>
+                <label><input type="radio" name="question1" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question1" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. 동시에 여러 가지 일을 시작하지만 끝마치기 어렵다.</p>
+            <div class="options">
+                <label><input type="radio" name="question2" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question2" value="3"> 그렇다</label>
+                <label><input type="radio" name="question2" value="2"> 보통이다</label>
+                <label><input type="radio" name="question2" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question2" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. 정밀한 일에 주의를 기울이지 못한다.</p>
+            <div class="options">
+                <label><input type="radio" name="question3" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question3" value="3"> 그렇다</label>
+                <label><input type="radio" name="question3" value="2"> 보통이다</label>
+                <label><input type="radio" name="question3" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question3" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. 쉽게 산만해진다.</p>
+            <div class="options">
+                <label><input type="radio" name="question4" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question4" value="3"> 그렇다</label>
+                <label><input type="radio" name="question4" value="2"> 보통이다</label>
+                <label><input type="radio" name="question4" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question4" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. 외부 자극에 의해 쉽게 산만해진다.</p>
+            <div class="options">
+                <label><input type="radio" name="question5" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question5" value="3"> 그렇다</label>
+                <label><input type="radio" name="question5" value="2"> 보통이다</label>
+                <label><input type="radio" name="question5" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question5" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. 해야 할 일을 미룬다.</p>
+            <div class="options">
+                <label><input type="radio" name="question6" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question6" value="3"> 그렇다</label>
+                <label><input type="radio" name="question6" value="2"> 보통이다</label>
+                <label><input type="radio" name="question6" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question6" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. 앉아 있어야 하는 상황에서 손발을 가만히 두지 못하고 안절부절 못한다.</p>
+            <div class="options">
+                <label><input type="radio" name="question7" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question7" value="3"> 그렇다</label>
+                <label><input type="radio" name="question7" value="2"> 보통이다</label>
+                <label><input type="radio" name="question7" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question7" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. 지나치게 말을 많이 한다.</p>
+            <div class="options">
+                <label><input type="radio" name="question8" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question8" value="3"> 그렇다</label>
+                <label><input type="radio" name="question8" value="2"> 보통이다</label>
+                <label><input type="radio" name="question8" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question8" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. 차례를 기다리기 힘들다.</p>
+            <div class="options">
+                <label><input type="radio" name="question9" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question9" value="3"> 그렇다</label>
+                <label><input type="radio" name="question9" value="2"> 보통이다</label>
+                <label><input type="radio" name="question9" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question9" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. 집중하는 데 어려움을 느끼거나, 단순한 일을 마무리하는 데 시간이 더 오래 걸린다.</p>
+            <div class="options">
+                <label><input type="radio" name="question10" value="4"> 매우 그렇다</label>
+                <label><input type="radio" name="question10" value="3"> 그렇다</label>
+                <label><input type="radio" name="question10" value="2"> 보통이다</label>
+                <label><input type="radio" name="question10" value="1"> 그렇지 않다</label>
+                <label><input type="radio" name="question10" value="0"> 매우 그렇지 않다</label>
+            </div>
+        </div>
+        <button type="submit">제출</button>
+    </form>
+    
+    <script>
+        document.getElementById('adhd-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const questions = 10;
+            let totalScore = 0;
+    
+            for (let i = 1; i <= questions; i++) {
+                const question = document.querySelector(`input[name="question${i}"]:checked`);
+                if (question) {
+                    totalScore += parseInt(question.value);
+                }
+            }
+    
+            // Redirect to the result page with the total score as a query parameter
+            window.location.href = `adhd_result.html?score=${totalScore}`;
+        });
+    </script>
+</body>
+</html>

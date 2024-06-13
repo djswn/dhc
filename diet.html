@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI 및 마른 비만 측정기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        label {
+            margin: 10px 0 5px;
+            display: block;
+            text-align: left;
+            color: #555;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e9f5ff;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .link-button {
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .link-button:hover {
+            background-color: #218838;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI 및 마른 비만 측정기</h1>
+        <label for="height">키 (cm)</label>
+        <input type="number" id="height" name="height" required>
+        
+        <label for="weight">몸무게 (kg)</label>
+        <input type="number" id="weight" name="weight" required>
+        
+        <label for="waist">허리 둘레(배꼽 기준) (cm)</label>
+        <input type="number" id="waist" name="waist" required>
+
+        <label for="gender">성별</label>
+        <select id="gender" name="gender" required>
+            <option value="male">남자</option>
+            <option value="female">여자</option>
+        </select>
+
+        <button onclick="calculateBMI()">계산하기</button>
+
+        <div class="result" id="result"></div>
+        <a href="diet_result.html" class="link-button hidden" id="diet-link">체형에 맞는 식단 및 운동법 보러가기</a>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById('height').value) / 100;
+            const weight = parseFloat(document.getElementById('weight').value);
+            const waist = parseFloat(document.getElementById('waist').value);
+            const gender = document.getElementById('gender').value;
+
+            const bmi = weight / (height * height);
+            let bmiCategory;
+            if (bmi < 18.5) {
+                bmiCategory = '저체중';
+            } else if (bmi < 23.0) {
+                bmiCategory = '정상';
+            } else if (bmi < 25.0) {
+                bmiCategory = '비만 전단계';
+            } else if (bmi < 30.0) {
+                bmiCategory = '1단계 비만';
+            } else {
+                bmiCategory = '2단계 비만';
+            }
+
+            let abdominalObesity = false;
+            if ((gender === 'male' && waist >= 90) || (gender === 'female' && waist >= 85)) {
+                abdominalObesity = true;
+            }
+
+            let resultText = `BMI: ${bmi.toFixed(1)} (${bmiCategory})<br>`;
+            if (abdominalObesity) {
+                resultText += '복부 비만: 예';
+            } else {
+                resultText += '복부 비만: 아니오';
+            }
+
+            document.getElementById('result').innerHTML = resultText;
+            document.getElementById('diet-link').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

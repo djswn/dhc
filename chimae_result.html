@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>치매 예방과 관리</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #5D5C61;
+            text-align: center;
+        }
+        h1 {
+            border-bottom: 2px solid #B7B7B7;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #30b668;
+        }
+        h4 {
+            color: #353535;    
+        }
+        p, ul {
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        .highlight {
+            background-color: #FFF3CD;
+            padding: 10px;
+            border-left: 5px solid #FFEEBA;
+            border-radius: 5px;
+        }
+        .highlight strong {
+            color: #856404;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>치매 자가진단 결과</h1>
+        <p class="highlight">본인의 결과 총점은 <strong id="score">@@점</strong>입니다.</p>
+        <p>의심 단계부터는 전문가의 소견이 필요합니다.</p>
+
+        <ul>
+            <li><strong>0~10점:</strong> 정상</li>
+            <li><strong>11~20점:</strong> 의심</li>
+            <li><strong>21~30점:</strong> 위기</li>
+            <li><strong>31~40점:</strong> 위험</li>
+        </ul>
+
+        <div class="section">
+            <h2>예방 방안</h2>
+            <ol>
+                <li>정기적인 건강검진을 받는다.</li>
+                <li>과도한 음주와 흡연을 피한다.</li>
+                <li>적절한 운동을 한다.</li>
+                <li>균형 잡힌 영양을 섭취한다.</li>
+                <li>활발하게 두뇌를 사용한다.</li>
+                <li>적절한 대인관계와 사회활동을 유지한다.</li>
+                <li>우울증을 치료한다.</li>
+                <li>기억력이 떨어지면 조기에 진료를 받는다.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>치매 예방 수칙 3, 3, 3 (출처: 중앙치매센터)</h2>
+            <h3>3권: 즐길 것</h3>
+            <ol>
+                <li>운동: 일주일에 3번 이상 걸으세요. 일상에서 걷기 운동을 꾸준히 하세요.</li>
+                <li>식사: 생선과 채소를 골고루 챙겨 드세요. 식사를 거르지 말고, 생선과 채소를 골고루 챙겨 드세요. 기름진 음식은 피하고 싱겁게 드세요.</li>
+                <li>독서: 부지런히 읽고 쓰세요. 틈날 때마다 책이나 신문을 읽고, 글쓰기를 하세요.</li>
+            </ol>
+
+            <h3>3금: 참을 것</h3>
+            <ol>
+                <li>절주: 술은 한 번에 3잔보다 적게 마시세요. 술은 한 번 마실 때 3잔보다 적게 마시고, 다른 사람에서 권하지도 마세요.</li>
+                <li>금연: 담배는 피우지 마세요. 흡연은 시작하지 말고, 지금 담배를 피고 있다면 당장 끊는 것이 좋아요.</li>
+                <li>뇌손상 예방: 머리를 부딪혔을 땐 바로 검사를 받으세요.</li>
+            </ol>
+
+            <h3>3행: 챙길 것</h3>
+            <ol>
+                <li>건강검진: 혈압, 혈당, 콜레스테롤 3가지를 정기적으로 체크하세요. 고혈압, 비만, 당뇨법을 예방할 수 있습니다.</li>
+                <li>소통: 가족과 친구와 자주 연락하고 만나세요. 단체활동과 여가생활을 하세요.</li>
+                <li>치매조기발견: 매년 보건소에서 치매 조기검진을 받으세요. 보건소에 가서 치매 조기검진을 받고 치매 초기증상을 알아두세요.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>받을 수 있는 지원</h2>
+            <ol>
+                <li>치매검진사업: 만 60세 이상 누구나 보건소 치매안심센터에서 무료로 치매선별검사를 받을 수 있다. 선별검사 이후 경도인지장애 또는 치매 의심자에게 치매정밀검사(신경심리검사)를 무료로 시행해주고 필요시에는 협약병원을 통한 진단검사 및 감별검사를 받을 수 있다.</li>
+                <li>치매치료관리비 지원서비스: 만 60세 이상, 의료기관에서 치매 상병코드 중 하나 이상 포함하여 진단을 받고 치매치료약을 복용중이고 가구 평균소득의 일정 기준 이하인 분은 관할 구, 군 보건소 산하 치매안심센터에서 지원신청을 하면 지원 받을 수 있다.</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>치매관련 사이트</h2>
+            <ul>
+                <li><a href="https://www.dementia.or.kr/general/" class="link">대한치매학회</a></li>
+                <li><a href="https://www.nid.or.kr/main/main.aspx" class="link">중앙치매센터</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const score = getQueryParameter('score');
+        const scoreElement = document.getElementById('score');
+        if (score !== null) {
+            scoreElement.textContent = `${score}점`;
+        } else {
+            scoreElement.textContent = '점수를 가져올 수 없습니다.';
+        }
+    </script>
+</body>
+</html>
