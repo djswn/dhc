@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 20px;
+        background-color: #f0f2f5;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+    .section {
+        margin-bottom: 30px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .section-header {
+        font-size: 24px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+    .btn-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+    .btn-container button {
+        padding: 15px 30px;
+        margin-left: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+    .btn-container button:hover {
+        background-color: #0056b3;
+    }
+    #start-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+    .post {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .post-header {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .post-content {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .comments {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #ccc;
+    }
+    .comment {
+        padding: 8px;
+        background-color: #d1ecf1;
+        border-radius: 3px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+    .comment-content {
+        margin-bottom: 5px;
+    }
+    .comment-input {
+        margin-top: 10px;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+    }
+    .comment-btn {
+        margin-top: 10px;
+        padding: 12px 24px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    .comment-btn:hover {
+        background-color: #0056b3;
+    }
+
+    #result {
+        margin-top: 10px;
+        font-size: 17px;
+    }
+
+</style>
+</head>
+<body>
+<h1>커뮤니티</h1>
+
+<div class="btn-container">
+    <button onclick="showCommunicationBoard()">소통창구</button>
+    <button onclick="showVoiceInteraction()">AI 음성 챗봇</button>
+</div>
+
+<div id="communication-board-section" class="section" style="display: none;">
+    <h2 class="section-header">소통창구</h2>
+    <div id="post-form">
+        <textarea id="post-content" class="comment-input" placeholder="게시글 내용을 입력하세요..."></textarea><br>
+        <button class="comment-btn" onclick="submitPost()">게시</button>
+    </div>
+    <div id="posts-container"></div>
+</div>
+
+<div id="voice-interaction-section" class="section" style="display: none;">
+    <h2 class="section-header">AI 음성 챗봇</h2>
+    <button id="start-btn">말하기</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function showCommunicationBoard() {
+        document.getElementById('communication-board-section').style.display = 'block';
+        document.getElementById('voice-interaction-section').style.display = 'none';
+        loadPosts();
+    }
+
+    function showVoiceInteraction() {
+        document.getElementById('communication-board-section').style.display = 'none';
+        document.getElementById('voice-interaction-section').style.display = 'block';
+    }
+
+    function submitPost() {
+        var postContent = document.getElementById('post-content').value;
+        if (postContent.trim() === '') {
+            alert('게시글 내용을 입력하세요.');
+            return;
+        }
+
+        var post = {
+            content: postContent,
+            comments: []
+        };
+
+        var posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts.push(post);
+        localStorage.setItem('posts', JSON.stringify(posts));
+
+        document.getElementById('post-content').value = '';
+        loadPosts();
+    }
+
+    function loadPosts() {
+        var posts = JSON.parse(localStorage.getItem('posts')) || [];
+        var postsContainer = document.getElementById('posts-container');
+        postsContainer.innerHTML = '';
+
+        posts.forEach(function(post, index) {
+            var postDiv = document.createElement('div');
+            postDiv.classList.add('post');
+
+            var header = document.createElement('div');
+            header.classList.add('post-header');
+            header.textContent = '게시물 #' + (index + 1);
+
+            var content = document.createElement('div');
+            content.classList.add('post-content');
+            content.textContent = post.content;
+
+            var editButton = document.createElement('button');
+            editButton.textContent = '수정';
+            editButton.onclick = function() {
+                editPost(index, post.content);
+            };
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = '삭제';
+            deleteButton.onclick = function() {
+                deletePost(index);
+            };
+
+            var commentsSection = document.createElement('div');
+            commentsSection.classList.add('comments');
+
+            var commentButton = document.createElement('button');
+            commentButton.textContent = '댓글 달기';
+            commentButton.onclick = function() {
+                showComments(post, commentsSection);
+            };
+
+            postDiv.appendChild(header);
+            postDiv.appendChild(content);
+            postDiv.appendChild(editButton);
+            postDiv.appendChild(deleteButton);
+            postDiv.appendChild(commentButton);
+            postDiv.appendChild(commentsSection);
+
+            postsContainer.appendChild(postDiv);
+
+            var space = document.createElement('br');
+            postDiv.appendChild(space);
+    });
+}
+
+    function editPost(index, currentContent) {
+        var newContent = prompt('수정할 내용을 입력하세요:', currentContent);
+        if (newContent === null || newContent.trim() === '') {
+            return;
+        }
+
+        var posts = JSON.parse(localStorage.getItem('posts')) || [];
+        posts[index].content = newContent;
+        localStorage.setItem('posts', JSON.stringify(posts));
+        loadPosts();
+    }
+
+    function deletePost(index) {
+        var confirmDelete = confirm('정말로 이 게시물을 삭제하시겠습니까?');
+        if (confirmDelete) {
+            var posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.splice(index, 1);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            loadPosts();
+        }
+    }
+
+    function showComments(post, commentsSection) {
+        commentsSection.innerHTML = '';
+
+        if (post.comments.length === 0) {
+            var noCommentsMessage = document.createElement('div');
+            noCommentsMessage.textContent = '댓글이 없습니다.';
+            commentsSection.appendChild(noCommentsMessage);
+        } else {
+            post.comments.forEach(function(comment) {
+                var commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+
+                var commentContent = document.createElement('div');
+                commentContent.classList.add('comment-content');
+                commentContent.textContent = comment;
+
+                commentDiv.appendChild(commentContent);
+                commentsSection.appendChild(commentDiv);
+            });
+        }
+
+        var commentInput = document.createElement('textarea');
+        commentInput.classList.add('comment-input');
+        commentInput.placeholder = '댓글을 입력하세요...';
+
+        var submitButton = document.createElement('button');
+        submitButton.classList.add('comment-btn');
+        submitButton.textContent = '댓글 남기기';
+        submitButton.onclick = function() {
+            submitComment(post, commentInput, commentsSection);
+        };
+
+        commentsSection.appendChild(commentInput);
+        commentsSection.appendChild(submitButton);
+    }
+
+    function submitComment(post, commentInput, commentsSection) {
+        var commentContent = commentInput.value;
+        if (commentContent.trim() === '') {
+            alert('댓글을 입력하세요.');
+            return;
+        }
+
+        post.comments.push(commentContent);
+        localStorage.setItem('posts', JSON.stringify(JSON.parse(localStorage.getItem('posts'))));
+
+        commentInput.value = '';
+        showComments(post, commentsSection);
+    }
+</script>
+
+<script src="client.js"></script>
+
+</body>
+</html>
