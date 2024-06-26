@@ -325,26 +325,6 @@
         commentInput.value = '';
         showComments(post, commentsSection);
     }
-
-    // 추가된 음성 인식 기능
-    document.getElementById('start-btn').addEventListener('click', function() {
-        var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'ko-KR';
-        recognition.start();
-
-        recognition.onresult = function(event) {
-            var transcript = event.results[0][0].transcript;
-            document.getElementById('result').textContent = '인식된 텍스트: ' + transcript;
-            
-            if (transcript.includes('다이어트')) {
-                window.location.href = 'http://127.0.0.1:5500/diet.html';
-            }
-        };
-
-        recognition.onerror = function(event) {
-            document.getElementById('result').textContent = '음성 인식 오류: ' + event.error;
-        };
-    });
 </script>
 
 <script src="client.js"></script>
