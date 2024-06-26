@@ -110,20 +110,45 @@
         font-size: 17px;
     }
 
+    .instruction-text {
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #333;
+        text-align: left;
+    }
+
+    .faq-header {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .faq-question {
+        font-size: 16px;
+        margin: 5px 0;
+        margin-bottom: 10px;
+    }
+    .f-question {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
 </style>
 </head>
 <body>
 <h1>커뮤니티</h1>
 
 <div class="btn-container">
-    <button onclick="showCommunicationBoard()">소통창구</button>
+    <button onclick="showCommunicationBoard()">게시판</button>
     <button onclick="showVoiceInteraction()">AI 음성 챗봇</button>
 </div>
 
 <div id="communication-board-section" class="section" style="display: none;">
-    <h2 class="section-header">소통창구</h2>
+    <h2 class="section-header">게시판</h2>
     <div id="post-form">
-        <textarea id="post-content" class="comment-input" placeholder="게시글 내용을 입력하세요..."></textarea><br>
+        <textarea id="post-content" class="comment-input" placeholder="게시글 내용을 입력하세요."></textarea><br>
         <button class="comment-btn" onclick="submitPost()">게시</button>
     </div>
     <div id="posts-container"></div>
@@ -131,6 +156,16 @@
 
 <div id="voice-interaction-section" class="section" style="display: none;">
     <h2 class="section-header">AI 음성 챗봇</h2>
+    <p class="instruction-text faq-header">FAQ(자주 묻는 질문)</p>
+    <p class="faq-question">1. 자가진단은 어떻게 진행되나요?</p>
+    <p class="faq-question">2. 자가진단 결과는 얼마나 신뢰할 수 있나요?</p>
+    <p class="faq-question">3. 자가진단에 걸리는 시간은 얼마나 되나요?</p>
+    <p class="faq-question">4. 자가진단 과정에서 입력한 개인정보는 안전한가요?</p>
+    <p class="faq-question">5. 자가진단 결과는 어떻게 사용되나요?</p>
+    <p class="faq-question">6. 자가진단 도중에 오류가 발생하면 어떻게 해야 하나요?</p>
+    <p class="faq-question">7. 자가진단 서비스는 무료인가요?</p>
+    <p class="faq-question">8. 자가진단을 다시 할 수 있나요?</p>
+    <p class="f-question">몇 번 질문이 궁금하신가요? (ex. 1번)</p>
     <button id="start-btn">말하기</button>
     <div id="result"></div>
 </div>
@@ -264,7 +299,7 @@
 
         var commentInput = document.createElement('textarea');
         commentInput.classList.add('comment-input');
-        commentInput.placeholder = '댓글을 입력하세요...';
+        commentInput.placeholder = '댓글을 입력하세요.';
 
         var submitButton = document.createElement('button');
         submitButton.classList.add('comment-btn');
@@ -290,6 +325,26 @@
         commentInput.value = '';
         showComments(post, commentsSection);
     }
+
+    // 추가된 음성 인식 기능
+    document.getElementById('start-btn').addEventListener('click', function() {
+        var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'ko-KR';
+        recognition.start();
+
+        recognition.onresult = function(event) {
+            var transcript = event.results[0][0].transcript;
+            document.getElementById('result').textContent = '인식된 텍스트: ' + transcript;
+            
+            if (transcript.includes('다이어트')) {
+                window.location.href = 'http://127.0.0.1:5500/diet.html';
+            }
+        };
+
+        recognition.onerror = function(event) {
+            document.getElementById('result').textContent = '음성 인식 오류: ' + event.error;
+        };
+    });
 </script>
 
 <script src="client.js"></script>
