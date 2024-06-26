@@ -119,8 +119,8 @@
         <ul id="nav-links" class="nav-links">
             <li><a href="#home" onclick="showPage('home')">Home</a></li>
             <li><a href="#about" onclick="showPage('about')">Healthcare</a></li>
-            <li><a href="mental_hospitals_map.html" onclick="redirectToMap()">Map</a></li>
-            <li><a href="chat.html" onclick="redirectToChat()">Community</a></li>
+            <li><a href="#map" onclick="redirectToMap()">Map</a></li>
+            <li><a href="#community" onclick="redirectToChat()">Community</a></li>
         </ul>
         <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">☰</a>
     </nav>
@@ -136,13 +136,13 @@
             </div>
             <div class="left-column">
                 <div class="link-group">
-                    <a href="http://127.0.0.1:5500/three.html" class="paper-link">
+                    <a href="mental.html" class="paper-link">
                         <img src="https://cdn-icons-png.flaticon.com/128/10299/10299690.png" alt="정신질환 자가진단" width="100">
                         <div>정신질환 자가진단</div>
                     </a>
                 </div>
                 <div class="link-group">
-                    <a href="http://127.0.0.1:5500/diet.html" class="paper-link">
+                    <a href="diet.html" class="paper-link">
                         <img src="https://cdn-icons-png.flaticon.com/128/11437/11437906.png" alt="다이어트" width="100">
                         <div>다이어트</div>
                     </a>
@@ -240,6 +240,35 @@
                 </div>
             </div>
         </div>
+                    <div id="map" class="page" style="display:none;">지도</div>
+        <script>
+            function showPage(pageId) {
+                var pages = document.getElementsByClassName("page");
+                for (var i = 0; i < pages.length; i++) {
+                    pages[i].style.display = "none";
+                }
+                document.getElementById(pageId).style.display = "block";
+            }
             
+            function redirectToMap() {
+                window.location.href = "mental_hospitals_map.html";
+            }
+
+            function redirectToChat() {
+                window.location.href = "chat.html";
+            }
+    
+            function toggleMenu() {
+                var x = document.getElementById("nav-links");
+                if (x.className === "nav-links") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav-links";
+                }
+            }
+    
+            // Default to showing the home page
+            showPage('home');
+        </script>
     </body>
     </html>
