@@ -1,10 +1,10 @@
 const startBtn = document.getElementById('start-btn');
 const resultDiv = document.getElementById('result');
-const apiUrl = "https://djswn.github.io/dhc/chat.html"; // 서버 주소를 설정합니다.
+const apiUrl = "https://djswn.github.io/dhc/chat.html";
 
 startBtn.addEventListener('click', async () => {
   const recognition = new webkitSpeechRecognition();
-  recognition.lang = 'ko-KR'; // 한국어 설정, 필요에 따라 변경 가능
+  recognition.lang = 'ko-KR'; 
   
   recognition.start();
 
