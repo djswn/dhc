@@ -242,9 +242,34 @@
         </div>
             
         <div id="map" class="page" style="display:none;">지도</div>
-        <div id="community" class="page" style="display:none;">AI 챗봇 /  Q&A</div>
-    </div>
+        <script>
+            function showPage(pageId) {
+                var pages = document.getElementsByClassName("page");
+                for (var i = 0; i < pages.length; i++) {
+                    pages[i].style.display = "none";
+                }
+                document.getElementById(pageId).style.display = "block";
+            }
+            
+            function redirectToMap() {
+                window.location.href = "mental_hospitals_map.html";
+            }
 
-    <script src="script.js"></script>
-</body>
-</html>
+            function redirectToChat() {
+                window.location.href = "chat.html";
+            }
+    
+            function toggleMenu() {
+                var x = document.getElementById("nav-links");
+                if (x.className === "nav-links") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav-links";
+                }
+            }
+    
+            // Default to showing the home page
+            showPage('home');
+        </script>
+    </body>
+    </html>
