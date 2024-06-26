@@ -1,6 +1,6 @@
 const startBtn = document.getElementById('start-btn');
 const resultDiv = document.getElementById('result');
-const apiUrl = 'http://localhost:5000/api/process_input'; // 서버 주소를 설정합니다.
+const apiUrl = 'http://127.0.0.1:5000/api/process_input'; // 서버 주소를 설정합니다.
 
 startBtn.addEventListener('click', async () => {
   const recognition = new webkitSpeechRecognition();
@@ -28,6 +28,6 @@ async function getResponse(input) {
     resultDiv.innerHTML += `<br>컴퓨터의 대답: ${data.response}`;
   } catch (error) {
     console.error('서버 요청 중 오류가 발생했습니다.', error);
-    resultDiv.innerHTML += `<br>푸힝힝.`;
+    resultDiv.innerHTML += `<br>서버 요청 중 오류가 발생했습니다.`;
   }
 }
