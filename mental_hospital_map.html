@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Hospitals Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map { height: 600px; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([36.5, 127.5], 7); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var hospitals = [
+            { name: '일산병원 정신과', location: [37.645494, 126.793013], phone: '031-900-0114' },
+            { name: '성안드레아 신경정신병원', location: [37.2458478, 127.388185], phone: '031-639-3700' },
+            { name: '용인정신병원', location: [37.2631971, 127.1582109], phone: '031-288-0114' },
+            { name: '가족사랑 서울 정신과 의원', location: [37.5001012, 126.9281175], phone: '02-2068-7486' },
+            { name: '대구 정신병원', location: [35.8051164, 128.5098781], phone: '053-630-3000~1' },
+            { name: '부산 동래병원', location: [35.2001477, 129.0902372], phone: '051-508-0011~5' },
+            { name: '인천 참사랑병원', location: [37.7251079, 126.6098784], phone: '032-571-9111' },
+            { name: '우리병원', location: [37.3142019, 126.8697336], phone: '051-323-6613' },
+            { name: '큰빛병원', location: [35.5000332, 129.4283216], phone: '052-272-2505' },
+            { name: '세광병원', location: [35.085648, 129.0242045], phone: '055-381-8275' },
+            { name: '밀양우리병원', location: [35.476326, 128.7662172], phone: '055-355-8100' },
+            { name: '양산병원', location: [35.3159506, 129.0273297], phone: '055-389-1234' },
+            { name: '성심병원', location: [35.2326841, 128.8520545], phone: '054-843-7887' },
+            { name: '미래로병원', location: [35.2113066, 129.0044774], phone: '054-442-0046' },
+            { name: '광주제일병원', location: [35.1370914, 126.9014184], phone: '062-227-7775' },
+            { name: '희망병원', location: [34.947323, 127.487965], phone: '063-540-8855' },
+            { name: '선병원', location: [36.6452291, 127.3776719], phone: '063-643-7575' },
+            { name: '다정한병원', location: [36.3405251, 127.4350704], phone: '061-330-8000' },
+            { name: '마인드병원', location: [36.3540837, 127.3822532], phone: '042-528-6550' },
+            { name: '의료법인 연강병원', location: [33.461296, 126.5332827], phone: '064-726-7900' },
+            { name: '연세정신과의원', location: [37.6893697, 127.8807669], phone: '033-435-1375' },
+            { name: '이신경정신과의원', location: [37.523719, 129.1108753], phone: '033-533-9895' },
+            { name: '영주삼봉정신병원', location: [36.8132982, 128.6197815], phone: '054-634-7600' },
+            { name: '다온정신건강의학과', location: [35.8257976, 127.1661243], phone: '063-246-4535' },
+            { name: '안윤영정신건강의학과의원', location: [36.6328378, 127.4919236], phone: '043-252-0808' },
+    ]
+
+        hospitals.forEach(function(hospital) {
+            var marker = L.marker(hospital.location).addTo(map);
+            marker.bindPopup('<b>' + hospital.name + '</b><br>' + hospital.phone);
+        });
+    </script>
+</body>
+</html>
